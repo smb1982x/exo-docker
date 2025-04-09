@@ -48,6 +48,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libblas-dev \
     liblapack-dev \
     libopenblas-dev \
+    libglib2.0-0 \
     # For healthcheck
     curl \
     # For dropping privileges
