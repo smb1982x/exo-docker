@@ -52,6 +52,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     # For dropping privileges
     gosu \
+    # Added Dependencies for CPU Only
+    libgl1-mesa-glx libgl1-mesa-dev clang \
     # Cleanup
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -67,6 +69,9 @@ RUN git clone https://github.com/exo-explore/exo.git /app/exo
 
 # Set working directory to exo for installation
 WORKDIR /app/exo
+
+# Install Python dependencies
+RUN pip install numba llvmlite
 
 # Install exo with CPU-optimized dependencies
 RUN pip install --no-cache-dir -e . \
